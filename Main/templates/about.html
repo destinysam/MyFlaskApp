@@ -1,0 +1,32 @@
+{%extends "layout.html"%}
+{%block content%}
+	<div class="container text-center">
+		<button type="button" class="btn btn-info btn-md mb-3 text-center">Motive</button></br>
+		<strong>"Sharing Your Ideas Or Knowledge With World"</strong>
+	</div>
+	<div class="container text-center mt-5">
+		<button type="button" class="btn btn-info btn-md mb-3 text-center">About</button>
+		<p><h6>KashBlog is a Blog application which offers u to share an idea or knowledge with the others.
+		Here you can write any knowledge based blogs which you want.we will always try to share your ideas or knowledge with  the world</h6></p>
+	</div>
+	<div class="text-center">
+		<img id = "developer-img" class="rounded-circle" src="{{url_for('static',filename='developer.jpg')}}" alt="">
+		<div class="d-flex">
+			<ul class="list-unstyled mx-auto">
+				<li class="mt-2" style="color: #5a6457;"><strong>Developer: RatherSameer</strong></li>
+				<li><a href="#"><i class="fa fa-envelope"> sams44802@gmail.com</i></a></li>
+				<li class="mt-4"><a href="#"><i class="fa fa-phone"> +91-6005840594</i></a></li>
+			</ul>
+		</div>
+		<div class="d-flex">
+			<ul class="social-network social-circle mx-auto">
+	             <li><a href="https://www.instagram.com/destinysam11" class="icoInstagram" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+	             <li><a href="https://www.linkedin.com/in/destiny-sam-a83485156"
+ 				class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+		     	<li><a href="https://www.github.com/destinysam" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>	
+            </ul>			
+		</div>
+			
+		</div>
+	</div>
+{%endblock content%}

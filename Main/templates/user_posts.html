@@ -1,0 +1,53 @@
+{%extends "layout.html"%}
+{%block content%}
+	<h3 class="mb-3" style="font: Abyssinica SIL">{{posts.total}} Posts</h3>
+	{%for post in posts.items%}
+		<article class="media content-section mb-2">
+			<img class="rounded-circle article-img" src="{{url_for('static',filename='Profile-pics/'+post.author.image_file)}}">
+			<div class="media-body">
+				<div class="article-metadata">
+					<a href="{{url_for('users.user_posts',username=post.author.username)}}">PostedBy: {{post.author.username}}</a>
+					<small class="text-muted">{{post.date_posted.strftime('%Y-%m-%d') }}</small>
+				</div>
+				<h2><a href="{{url_for('posts.post',post_id=post.id)}}" class="article-title" style="font-size: 6vw;
+				font-weight: bold;">{{post.title}}</a></h2>
+				<p class="article-content">{{post.content}}</p>
+				<div class="inline">
+					{%if current_user.is_authenticated and current_user.has_liked_post(post)%}
+						<a href="{{url_for('index.reaction',post_id=post.id, action='dislike')}}" class="fa fa-thumbs-up" title="like" style="font-size: 25px;
+						text-decoration: none;" ></a>
+					{%else%}		
+						<a href="{{url_for('index.reaction',post_id=post.id,action = 'like' )}}" class="fa fa-thumbs-up" title="like" style="font-size: 25px;
+						text-decoration: none;"></a>
+					{%endif%}	
+				</div>
+				<small class="text-muted  ml-1" style="float: left; margin-right: 10px;">{{post.likes.count()}} likes</small>
+				<div class="inline ">
+					{%if current_user.is_authenticated and current_user.has_disliked_post(post)%}
+						<a href="{{url_for('index.Dislike',post_id=post.id, action='Undislike')}}" class="fa fa-thumbs-down" title="Dislike" style="font-size: 25px;
+						text-decoration: none;" ></a>
+					{%else%}		
+						<a href="{{url_for('index.Dislike',post_id=post.id,action = 'dislike' )}}" class="fa fa-thumbs-down" title="Dislike" style="font-size: 25px;
+						text-decoration: none;"></a>
+					{%endif%}	
+				</div>
+				<small class="text-muted " style="float: left;
+				margin-left: 2px;">{{post.dislikes.count()}} dislikes</small>
+			</div>
+		</article>
+	{%endfor%}	
+	{%for page_num in posts.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=1)%}
+		{%if page_num%}
+			{%if posts.page == page_num%}
+				<a class="btn btn-info mt-4" href="{{url_for('users.user_posts',username=user.username,page=page_num)}}">{{page_num}}</a>
+			{%else%}
+					<a class="btn btn-info mt-4" href="{{url_for('users.user_posts',username=user.username,page=page_num)}}">{{page_num}}</a>
+			{%endif%}	
+		{%else%}
+			...	
+		{%endif%}	
+	{%endfor%}
+	<div  class="d-flex justify-content-center mt-2">
+		<a href="#top" ><i class=" fa fa-chevron-up"></i>Top</a>
+	</div>		
+{%endblock content%}

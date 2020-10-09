@@ -1,0 +1,68 @@
+{%extends "layout.html"%}
+{%block content%}
+	<div class="text-center">
+		<button type="button" class=" btn btn-info btn-lg mb-2">Account Info</button>
+	</div>
+	<div class="container content-section">
+		<img class="rounded-circle account-img" src="{{url_for('static',filename='Profile-pics/'+current_user.image_file)}}" alt="">
+			<h3 style="font-size: 5vw">Username: 
+				<strong >{{current_user.username}}
+				</strong>
+			</h3>
+			<h3 style="font-size: 5vw">Email:
+				<strong >{{current_user.email}}</strong> 
+			</h3> 
+	</div>
+	<div class="text-center mt-2">
+		<button type="button" class=" btn btn-secondary btn-lg mb-2">Update Account</button>
+	</div>
+	<div class="content-section">
+		<form method="POST" action="" enctype="multipart/form-data">
+			{{form.hidden_tag()}}
+			<div class="form-group row justify-content-center  text-center">
+				<div class="col-xs-6">
+					{{form.username.label(class="form-control-label")}}
+					{%if form.username.errors%}
+						{{form.username(class="form-control form-control-lg is-invalid")}}
+						<div class="invalid-feedback">
+							{%for error in form.username.errors%}
+								<span>{{error}}</span>
+							{%endfor%}	
+						</div>
+					{%else%}
+						{{form.username(class="form-control form-control-lg")}}
+					{%endif%}		
+				</div>
+			</div>
+			<div class="form-group row justify-content-center text-center">
+				<div class="col-xs-6">
+					{{form.email.label(class="form-control-label")}}
+					{%if form.email.errors%}
+						{{form.email(class="form-control form-control-lg is-invalid")}}
+						<div class="invalid-feedback">
+							{%for error in form.email.errors%}
+								<span>{{error}}</span>
+							{%endfor%}	
+						</div>
+					{%else%}
+						{{form.email(class="form-control form-control-lg")}}
+					{%endif%}		
+				</div>
+			</div>
+			<div class="form-group row justify-content-center text-center">
+				<div class="col-xs-6">
+					{{form.picture.label()}}
+					{{form.picture(class="form-control-file")}}
+					{%if form.picture.errors%}
+						{%for error in form.email.errors%}
+							<span>{{error}}</span></br>
+						{%endfor%}
+					{%endif%}		
+				</div>
+			</div>			
+			<div class="form-group">
+				{{form.submit(class="btn btn-outline-info")}}
+			</div>
+		</form>
+	</div>
+{%endblock content%}
