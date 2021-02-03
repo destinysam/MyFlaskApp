@@ -18,7 +18,7 @@ def SavePicture(PictureFile):
 
 def send_reset_email(user):
 	token = user.get_reset_token()
-	msg = Message('Reset Password',sender='noreply@demo.com',recipients=[user.email])
+	msg = Message('Reset Password',sender='sams44802@gmail.com',recipients=[user.email])
 	msg.body = f'''To reset your password click on this link:
 {url_for('users.reset_token',token=token,_external=True)}
 if You don't want to change please ignore this email'''

@@ -3,12 +3,12 @@ class config:
 	SQLALCHEMY_DATABASE_URI = 'sqlite:///database.db'
 	WHOOSH_BASE = 'whoosh'
 	TESTING = False 
-	MAIL_SERVER = 'smtp.hushmail.com'
+	MAIL_SERVER = 'smtp.sendgrid.net'
 	MAIL_PORT = 587
 	MAIL_USE_TLS = True
 	MAIL_USE_SSL = False
-	MAIL_USERNAME = 'reemas99@hushmail.com'
-	MAIL_PASSWORD = '1allahakbar#'
-	MAIL_DEFAULT_SENDER = 'destinysam@hushmail.com'
+	MAIL_USERNAME = 'apikey'
+	MAIL_PASSWORD = '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'
+	MAIL_DEFAULT_SENDER = 'sams44802@gmail.com'
 	MAIL_MAX_EMAILS = None
 	MAIL_ASCII_ATTACHMENTS = False
